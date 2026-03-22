@@ -2,9 +2,9 @@
 import { ref, onMounted } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 
-const themes = ['dark', 'light', 'green']
+const themes = ['dark', 'light', 'orange']
 const themeIndex = ref(0)
-const themeIcons = ['🌙', '☀️', '🍀']
+const themeIcons = ['🌙', '☀️', '🍊']
 
 onMounted(() => {
   const saved = localStorage.getItem('theme')
