@@ -2,28 +2,34 @@
 import { ref, onMounted } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 
-const isDark = ref(true)
+const themes = ['dark', 'light', 'green']
+const themeIndex = ref(0)
+const themeIcons = ['🌙', '☀️', '🍀']
 
 onMounted(() => {
   const saved = localStorage.getItem('theme')
-  isDark.value = saved ? saved === 'dark' : true
+  if (saved) {
+    themeIndex.value = themes.indexOf(saved)
+    if (themeIndex.value === -1) themeIndex.value = 0
+  }
   applyTheme()
 })
 
 function toggleTheme() {
-  isDark.value = !isDark.value
-  localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
+  themeIndex.value = (themeIndex.value + 1) % themes.length
+  const currentTheme = themes[themeIndex.value]
+  localStorage.setItem('theme', currentTheme)
   applyTheme()
 }
 
 function applyTheme() {
-  document.documentElement.setAttribute('data-theme', isDark.value ? 'dark' : 'light')
+  document.documentElement.setAttribute('data-theme', themes[themeIndex.value])
 }
 </script>
 
 <template>
   <button class="theme-toggle" @click="toggleTheme">
-    {{ isDark ? '☀️' : '🌙' }}
+    {{ themeIcons[themeIndex] }}
   </button>
   <HelloWorld />
 </template>

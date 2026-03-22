@@ -45,6 +45,21 @@
   color-scheme: dark;
 }
 
+:root[data-theme='green'] {
+  --text: #d1d5db;
+  --text-h: #f0fdf4;
+  --bg: #14532d;
+  --border: #166534;
+  --code-bg: #14532d;
+  --accent: #4ade80;
+  --accent-bg: rgba(74, 222, 128, 0.15);
+  --accent-border: rgba(74, 222, 128, 0.5);
+  --social-bg: rgba(20, 83, 45, 0.6);
+  --shadow:
+    rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  color-scheme: dark;
+}
+
 #social .button-icon {
   filter: invert(1) brightness(2);
 }
